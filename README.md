@@ -110,6 +110,7 @@ app/
 │   └── screenshots/ # Login, signup, home screen images
 ├── data/            # Mock data, static files
 ├── hooks/           # Custom React hooks
+├── components/      # Custom components
 ├── navigation/      # Stack and navigation setup
 ├── screens/         # Login, Signup, Home, etc.
 ├── services/        # Business logic, API helpers, storage

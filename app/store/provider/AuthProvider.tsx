@@ -38,7 +38,6 @@ export default function AuthProvider({
   const login = async (username: string, password: string) => {
     try {
       const storedData = await AsyncStorage.getItem(`user_${username}`);
-      console.log('storedData', storedData);
 
       if (!storedData) {
         Alert.alert('Login Failed', 'User not found');

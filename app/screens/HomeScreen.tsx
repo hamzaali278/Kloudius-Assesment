@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  View,
   Text,
   TouchableOpacity,
   StyleSheet,
@@ -8,6 +7,7 @@ import {
   Image,
 } from 'react-native';
 import {useAuth} from '../store/contexts/AuthContext';
+import DetailCard from '../components/DetailCard';
 
 export default function HomeScreen(): JSX.Element {
   const {user, logout} = useAuth();
@@ -21,16 +21,7 @@ export default function HomeScreen(): JSX.Element {
       />
 
       {/* Welcome Card */}
-      <View style={styles.card}>
-        <View style={styles.avatar}>
-          <Text style={styles.avatarText}>
-            {user?.name?.charAt(0).toUpperCase() || 'U'}
-          </Text>
-        </View>
-        <Text style={styles.greeting}>Welcome back,</Text>
-        <Text style={styles.name}>{user?.name}</Text>
-        <Text style={styles.username}>{user?.username}</Text>
-      </View>
+      {user?.username && user?.name && <DetailCard {...user} />}
 
       {/* Logout Button */}
       <TouchableOpacity style={styles.logoutButton} onPress={logout}>
@@ -52,48 +43,7 @@ const styles = StyleSheet.create({
     height: 100,
     marginBottom: 24,
   },
-  card: {
-    backgroundColor: '#ffffff',
-    padding: 28,
-    borderRadius: 20,
-    alignItems: 'center',
-    width: '85%',
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 3},
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
-    elevation: 5,
-    marginBottom: 32,
-  },
-  avatar: {
-    backgroundColor: '#D22B2B',
-    width: 72,
-    height: 72,
-    borderRadius: 36,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-  avatarText: {
-    color: '#fff',
-    fontSize: 28,
-    fontWeight: '600',
-  },
-  greeting: {
-    fontSize: 18,
-    color: '#888',
-    marginBottom: 4,
-  },
-  name: {
-    fontSize: 24,
-    fontWeight: '700',
-    color: '#222',
-  },
-  username: {
-    fontSize: 16,
-    color: '#777',
-    marginTop: 4,
-  },
+
   logoutButton: {
     backgroundColor: '#D22B2B',
     paddingVertical: 14,
